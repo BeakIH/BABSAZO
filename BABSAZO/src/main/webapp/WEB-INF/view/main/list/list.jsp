@@ -734,16 +734,16 @@ $(function(){
 							<nav aria-label="Page navigation">
 								<ul class="pagination">
 									<c:if test="${startPage>1}">
-										<li class="page-item"><a class="page-link" href="/FinalTest/main/list/list.do?page=${startPage-1}">&laquo;</a></li>
+										<li class="page-item"><a class="page-link" href="/BABSAZO/main/list/list.do?page=${startPage-1}">&laquo;</a></li>
 									</c:if>
 									
 									<c:forEach begin="${startPage}" end="${endPage}" varStatus="page">
-										<li class="page-item active"><a class="page-link" href="/FinalTest/main/list/list.do?page=${page.index}">${page.index}</a></li>
+										<li class="page-item active"><a class="page-link" href="/BABSAZO/main/list/list.do?page=${page.index}">${page.index}</a></li>
 										<!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
 									</c:forEach>
 									
 									<c:if test="${maxPage > endPage}">
-										<li class="page-item"><a class="page-link" href="/FinalTest/main/list/list.do?page=${endPage+1}">&raquo;</a></li>
+										<li class="page-item"><a class="page-link" href="/BABSAZO/main/list/list.do?page=${endPage+1}">&raquo;</a></li>
 									</c:if>
 								</ul>
 							</nav>

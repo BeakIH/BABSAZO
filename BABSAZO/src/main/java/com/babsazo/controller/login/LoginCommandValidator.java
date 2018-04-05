@@ -1,4 +1,4 @@
-package com.babsazo.controller;
+package com.babsazo.controller.login;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

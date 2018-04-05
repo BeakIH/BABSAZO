@@ -26,8 +26,19 @@ public class SearchListController {
 	private ListService listService;
 	
 	@RequestMapping("/main/list/list.do")
-	public ModelAndView intoListPage(@Valid SearchDto searchDto, @RequestParam(defaultValue="1") int page, @RequestParam(value="search", required=false) String search, @RequestParam(value="searchn", required=false) int searchn) {
+	public ModelAndView intoListPage(@Valid SearchDto searchDto, @RequestParam(defaultValue="1") int page, @RequestParam(defaultValue="", value="search", required=false) String search, @RequestParam(defaultValue="0", value="searchn", required=false) int searchn) {
 		ModelAndView mav = new ModelAndView();
+		
+		// search 와 searchn 의 null 값처리 시작
+		System.out.println("search 값 :"+search);
+		System.out.println("searchn 값 :"+searchn);
+		
+		/*if(search=="" || searchn==0) {
+			search = "";
+			searchn = 0;
+		}*/
+		
+		// search 와 searchn 의 null 값처리 끝
 		
 		searchDto.setSearch(search);
 		searchDto.setSearchn(searchn);
@@ -35,7 +46,8 @@ public class SearchListController {
 		/*총 페이지 연산*/
 		int pageSize = 10;
 		// getDetailList() 에 넣을 파라미터 필요함 ( 검색어가 들어가야함 )
-		int detailListCount = listService.getDetailList(searchDto).get(0);
+		int detailListCount = listService.getDetailListCount(searchDto).get(0);
+		System.out.println("검색데이터 개수:"+detailListCount);
 		int maxPage =0;
 		if(detailListCount%pageSize >0) {
 			maxPage = detailListCount/pageSize +1; 
@@ -66,11 +78,11 @@ public class SearchListController {
 		
 		List<ListCommand> detailListInPage = new ArrayList<ListCommand>();
 		for(int i=startListIndex;i<endListIndex;i++) {
-			detailListInPage.add(listService.getAllStoreList().get(i));
+			detailListInPage.add(listService.getDetailList(searchDto).get(i));
 		}
 		
 		mav.setViewName("main/list/list");
-		mav.addObject("detailListInPage", detailListInPage);
+		mav.addObject("storeListInPage", detailListInPage); // 데이터자체는 main 호출했을때와 다름 
 		mav.addObject("searchDto", searchDto);
 		mav.addObject("maxPage", maxPage);
 		mav.addObject("startPage", startPage);
