@@ -7,12 +7,9 @@ public class SearchDto {
 	// 검색창 
 	private String search;	// 검색어
 	private int searchn;	// 카테고리
-	
 	private int sortValue;	// 기본정렬옵션
-	
 	private int minSal;		// 최소값
 	private int maxSal;		// 최대값
-	
 	private int cate_nm;	// 음식종류
 	private int floor_no;	// 층 선택
 	
