@@ -13,14 +13,40 @@
 		select count(*) from store_list
 	</select>
 	
+	<!-- 검색했을시에 데이터를 얻어올 쿼리문 -->
+	<select id="detailList" resultType="com.babsazo.model.ListCommand" parameterType="com.babsazo.model.SearchDto">
+		select * from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')+2=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date
+		<if test='search != null || search != ""'>
+			<if test='searchn == 0'>
+			<!-- 음식명 -->
+			 and store_info like '%' || #{search} || '%' 
+			</if>
+			<if test='searchn == 1'>
+			<!-- 매장명 -->
+			 and store_nm like '%' || #{search} || '%'
+			</if>
+		</if>
+	</select>
+	
 	<select id="detailListCount" resultType="int" parameterType="com.babsazo.model.SearchDto">
 		<!-- 검색어와 카테고리 파라미터 두개를 가지고 쿼리문을 작성 -->
 		<!-- 					여기가 searchn이 0이냐, 1이냐에 따라서 변해야함	 -->
-		<c:choose>
-			<c:when test="{store_nm} ">
-			</c:when>
-		</c:choose>
-		select count(*) from store_list where store_nm='%{store_nm}%'
+		
+		<!-- select count(*) from store_list where A like '%' || #{keyword} || '%' -->
+		select count(*) from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')+2=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date
+		<if test='search != null || search != ""'>
+			<if test='searchn == 0'>
+			<!-- 음식명 -->
+			 and store_info like '%' || #{search} || '%' 
+			</if>
+			<if test='searchn == 1'>
+			<!-- 매장명 -->
+			 and store_nm like '%' || #{search} || '%'
+			</if>
+		</if>
+		<!-- <if test="#{search} == null">
+		
+		</if> -->
 	</select>
 	
 	<!-- <sql id="test1"></sql> -->

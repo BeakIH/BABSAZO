@@ -26,13 +26,14 @@ public class ListService {
 	
 	
 	//										기존 매개변수 boardNum
-	/*public List<ListCommand> getDetailList(int listNum){
-		return listDao.getListData("list.selectOneList",listNum);
-	}*/
+	public List<ListCommand> getDetailList(SearchDto searchDto){
+		System.out.println("DetailList() 전달확인");
+		return listDao.getListData("list.detailList",searchDto);
+	}
 
 	// count(*) 를 얻기위함이므로 int 타입 리턴데이터가 필요하기때문에 Integer
-	public List<Integer> getDetailList(SearchDto searchDto){
-		System.out.println("기본검색메서드 전달확인");
+	public List<Integer> getDetailListCount(SearchDto searchDto){
+		System.out.println("Count() 전달확인");
 		return listDao.getListData("list.detailListCount",searchDto);
 	}
 	
