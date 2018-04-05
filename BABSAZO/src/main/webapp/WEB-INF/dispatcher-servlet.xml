@@ -63,6 +63,11 @@
 	<bean id="listDao" class="com.babsazo.dao.ListDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<!-- list_info  -->
+	<bean id="storeListDateDao" class="com.babsazo.dao.StoreListDateDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 
 	<!-- 6-예제 이벤트 리스트 -->
 	<bean
@@ -86,4 +91,9 @@
 	<bean class="com.babsazo.service.ListService" />
 	<bean class="com.babsazo.controller.MainController" />
 	<bean class="com.babsazo.controller.SearchListController"/>
+	
+	
+	<!-- list_info bean생성 -->
+	<bean class="com.babsazo.service.StoreListDateService"/>
+	<bean class="com.babsazo.controller.StoreListDateController"/>
 </beans>
