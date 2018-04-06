@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.babsazo.model.MenuDataCommand;
+import com.babsazo.model.SeatingCommand;
 import com.babsazo.model.StoreListDateCommand;
 import com.babsazo.service.StoreListDateService;
 
@@ -64,12 +65,16 @@ public class StoreListDateController {
 		//preorder 가져오기
 		List<MenuDataCommand> menuList = storeListDateService.selectFoodMenu(store_no);
 		
+		//seating 가져오기
+		List<SeatingCommand> seatingList = storeListDateService.selectSeating(store_no);
+		
 		/*//member 가져오기
 		List<MemSelectDateCommand> memList = new ArrayList<MemSelectDateCommand>();
 		List<MemSelectDateCommand> MemList = storeListDateService.selectMember(mem_no);
 		memList.add(storeListDateService.selectMember(mem_no).get(0));*/
 		mav.setViewName("main/list/reserve");
 		mav.addObject("menuList" , menuList);
+		mav.addObject("seatingList" , seatingList);
 		mav.addObject("storeListInfo", storeListInfo);
 		/*mav.addObject("memList", memList);*/
 		return mav;

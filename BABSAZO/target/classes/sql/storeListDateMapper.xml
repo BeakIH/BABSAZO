@@ -23,6 +23,8 @@
 		insert into booking values(booking_seq.NEXTVAL,#{emp_no},#{mem_no},#{store_no},#{mem_nm},#{mem_tel},#{bk_date},#{bk_time},#{bk_cnt},#{bk_menu}'N',0,#{bk_pri_sum},#{insert_date})
 	</insert>
 	
-	
+	<select id="selectSeating" parameterType="int" resultType="com.babsazo.model.SeatingCommand">
+		select * from seating where store_no = #{store_no} and bk_date = to_char(sysdate,'yyyy-mm-dd')
+	</select>	
 	
 </mapper>
