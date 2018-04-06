@@ -15,6 +15,7 @@
 		} catch (err) {}; // just throw any illegal format
 	};
 
+	
 	/* Date => "YYYY-MM-DD" */
 	function dateToStr(d) {
 		/* fix month zero base */
@@ -184,3 +185,10 @@
 		});
 	});
 }($));
+
+
+/* 날짜 불가 이벤트 해보는 중
+$(function() {
+	$( "#datepicker" ).datepicker({ minDate: 0});
+	});*/
+

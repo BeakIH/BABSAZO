@@ -5,13 +5,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
-
-
+<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script> -->
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
 <!-- 달력 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/calender/style.css" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 달력 -->
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/calender/style.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/calender/calendar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/calender/calendar.js"></script> --%>
 <!-- 달력 -->
 
 <%-- <script src="<c:url value=/resources/lib/jquery-3.2.1.min.js />"></script> --%>
@@ -21,7 +26,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Real Estate</title>
 
-<script src="${pageContext.request.contextPath}/resources/lib/jquery-3.2.1.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/lib/jquery-3.2.1.min.js"></script> --%>
 
 <!-- Bootstrap -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900%7COpen+Sans" rel="stylesheet" />
@@ -37,7 +42,7 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="${pageContext.request.contextPath}/resources/lib/jquery-3.2.1.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/lib/jquery-3.2.1.min.js"></script> --%>
 <script src="${pageContext.request.contextPath}/resources/lib/popper.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="${pageContext.request.contextPath}/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -52,6 +57,28 @@
 
 <script type="text/javascript">
 
+/* 달력 */
+ 
+
+    $.datepicker.setDefaults({
+        dateFormat: 'yy-mm-dd',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+    });
+	
+    $( function() {
+        $( "#datepicker1" ).datepicker({ minDate: 0, maxDate: "+6D" });
+      } );
+   /*  $(function() {
+        $("#datepicker1").datepicker();
+    }); */
     // 선택한 항목 삭제
     function removeItem(str){
         var frm = document.form1;
@@ -304,22 +331,19 @@
               <div class="item-gallery">
                 <div class="swiper-container gallery-top" data-pswp-uid="1">
                   <div class="swiper-wrapper lazyload">
-                  
-                    <div class="swiper-slide">
-                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" itemprop="contentUrl" data-size="2000x1414"> <img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="${pageContext.request.contextPath}/resources/img-fluid swiper-lazy" alt="Drawing Room"> </a> </figure>
-                    </div>
-                    <div class="swiper-slide">
-                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" itemprop="contentUrl" data-size="2000x1414"> <img data-src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" src="${pageContext.request.contextPath}/resources/img/spacer.png" class="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" alt="Drawing Room"> </a> </figure>
-                    </div>
-                    <div class="swiper-slide">
-                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" itemprop="contentUrl" data-size="2000x1414"> <img data-src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" src="${pageContext.request.contextPath}/resources/img/spacer.png" class="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" alt="Drawing Room"> </a> </figure>
-                    </div>
-                    <div class="swiper-slide">
-                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" itemprop="contentUrl" data-size="2000x1414"> <img data-src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" src="${pageContext.request.contextPath}/resources/img/spacer.png" class="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" alt="Drawing Room"> </a> </figure>
-                    </div>
-                    <div class="swiper-slide">
-                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" itemprop="contentUrl" data-size="2000x1414"> <img data-src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" src="${pageContext.request.contextPath}/resources/img/spacer.png" class="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" alt="Drawing Room"> </a> </figure>
-                    </div>
+                  	<c:forEach var="menu" items="${menuList}">
+													<div class="swiper-slide">
+														<figure itemprop="associatedMedia" itemscope
+															itemtype="http://schema.org/ImageObject">
+															<a href="${pageContext.request.contextPath}/resources/img/demo/property/1.jpg" itemprop="contentUrl"
+																data-size="2000x1414"> <img
+																src="${pageContext.request.contextPath}${menu.menu_img_root}"
+																class="img-fluid swiper-lazy" alt="Drawing Room"
+																style="padding-left: 12%;max-width:88%;">
+															</a>
+														</figure>
+													</div>
+													</c:forEach>
                     
                   </div>
                   <div class="swiper-button-next"></div>
@@ -327,15 +351,13 @@
                 </div>
                 <div class="swiper-container gallery-thumbs">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="${pageContext.request.contextPath}/resources/img/food_menu_img/01.jpg" class="img-fluid" alt=""></div>
+                    <c:forEach var="menu" items="${menuList}">
+													<div class="swiper-slide">
+														<img src="${pageContext.request.contextPath}${menu.menu_img_root }" class="img-fluid"
+															alt="">
+													</div>
+					</c:forEach>
+                   
                   </div>
                 </div>
                 <div class="item-description">
@@ -346,19 +368,13 @@
 <table border="0" style="font-size:9pt;" cellpadding="3" cellspacing="0" align="center">
     <tr>
         <td align="center">
-            <select name="gayo" size="1">
+            <select name="gayo" size="1" style="width: 250px;height: 43px;font-size:1.5em;">
             <c:forEach var="menu" items="${menuList}">
-            <option value="${menu.menu_no} ">${menu.menu_nm}</option>
-                <!-- <option value="1">그 사람 찾으러 간다</option>
-                <option value="2">부끄부끄</option>
-                <option value="3">유쾌상쾌통쾌</option>
-                <option value="4">MY WAY</option>
-                <option value="5">화이팅(FIGHTING)</option>
-                <option value="6">장윤정 트위스트</option>
-                <option value="6">총맞은 것처럼</option> -->
+            <option value="${menu.menu_nm}">${menu.menu_nm} : ${menu.menu_price}</option>
+         
                 </c:forEach>
             </select>
-            <input type="button" value="메뉴추가하기" onclick="addItem('select1')"> <!-- <input type="button" value="2에 추가" onclick="addItem('select2')"> -->
+            <input type="button" value="메뉴추가하기" onclick="addItem('select1')" style="width: 96px;height: 42px;margin-right: 24px;padding-top: 9px;padding-bottom: 6px;"> <!-- <input type="button" value="2에 추가" onclick="addItem('select2')"> -->
         </td>
     </tr>
  
@@ -375,11 +391,12 @@
                 <td colspan="2" align="center" bgcolor="#E2E2E2"><b>2</b></td>
             </tr> -->
             <tr>
-                <td align="center" bgcolor="white"><select name="select1" size="10" style="width:200px;"></select></td>
+                <td align="center" bgcolor="white"><select name="select1" size="10" style=" font-size:2.0em;width: 402px;height: 252px;"></select></td>
                 <td align="center" bgcolor="white">
                    <!--  <input type="button" value=" ▲ " onclick="moveUp('select1')"><br>
                     <input type="button" value=" ▼ " onclick="moveDown('select1')"><br> -->
-                    <input type="button" value="삭제" onclick="removeItem('select1')">
+                    <input type="button" value="삭제" onclick="removeItem('select1')" style="width: 66px;height: 41px;"><br><br>
+                    <input type="button" value="모두삭제" onclick="removeAllItem('select1');removeAllItem('select2')"style="width: 66px;height: 41px;">
                 </td>
               <!--   <td align="center" bgcolor="white"><select name="select2" size="10" style="width:200px;"></select></td>
                 <td align="center" bgcolor="white">
@@ -389,16 +406,23 @@
                 </td> -->
             </tr>
             <tr>
-                <td align="center" colspan="4" bgcolor="white">                   
-                    <input type="button" value="모두삭제" onclick="removeAllItem('select1');removeAllItem('select2')">
-                    <input type="button" value="주문완료" onclick="removeAllItem('select1');removeAllItem('select2')"></td>
+             <td align="center" colspan="4" bgcolor="white">  
+            	<input type="text" value="총 가격: 50000원" style="margin-left: 170px;width: 76px;height: 41px;">
+            
             </tr>
+            <!-- <tr>
+                <td align="center" colspan="4" bgcolor="white">                   
+                    <input type="button" value="모두삭제" onclick="removeAllItem('select1');removeAllItem('select2')"style="margin-left: 170px;width: 76px;height: 41px;">
+                    <input type="submit" value="주문완료" onclick="removeAllItem('select1');removeAllItem('select2')"style="width: 76px;height: 41px;"></td>
+            </tr> -->
         </table>
  
         </td>
     </tr>
 </table>
 </form>
+
+
 									
 				</div>
               </div>
@@ -421,10 +445,11 @@
                       <table class="table v1">
                      <tr>
           				<td style="padding-left: 0px; border-bottom: 1px solid rgba(134, 158, 158, 0.3);font-weight:bold;color:rgba(134, 158, 158, 1);width: 137px;">날짜 선택</td>
-                          <td style="border-bottom: 1px solid rgba(134, 158, 158, 0.3);font-weight:bold;color:rgba(134, 158, 158, 1);padding-right: 0px;"> ????</td>
                        </tr>
                       </table> 
-                      <div class="jquery-calendar"></div>
+                      <input id="datepicker1" value="달력보기"/>
+                      <!-- <div id="datepicker1"> </div> -->
+                     <!--  <div class="jquery-calendar"></div> -->
           				 <table class="table v1" style="margin-top: 10px;border-top: 1px solid rgba(134, 158, 158, 0.3);">
                        <tr class="menu1">
           				<td class="menu2" style="padding-left: 0px; border-bottom: 1px solid rgba(134, 158, 158, 0.3);font-weight:bold;color:rgba(134, 158, 158, 1);width: 137px;">시간 선택</td>
@@ -434,8 +459,9 @@
                     	</table>
                
                       <ul class="time">
- 							<li><a href="#;">11:00</a></li>
- 							<li><a href="#;">12:00</a></li>
+                       <c:forEach var="seating" items="${seatingList}">
+ 							<li><a href="#;">${seating.bk_time}</a></li>
+ 							<!-- <li><a href="#;">12:00</a></li>
  							<li><a href="#;">13:00</a></li>
  							<li><a href="#;">16:00</a></li>
  							<li><a href="#;">17:00</a></li>
@@ -445,7 +471,8 @@
  							<li><a href="#;">21:00</a></li>
 							<li><a href="#;">22:00</a></li>
 							<li><a href="#;">23:00</a></li>
- 							<li><a href="#;">24:00</a></li>
+ 							<li><a href="#;">24:00</a></li> -->
+					 </c:forEach>
 					 </ul>
 				
 					 </div>
@@ -961,6 +988,7 @@ var main_gallery = '.gallery-top';
     galleryThumbs.controller.control = galleryTop;	
  
     
+
     /*  버튼누르면 색상변하는 이벤트*/
      function change1(obj){
         obj.style.background = 'red';
