@@ -34,19 +34,120 @@
 		
 		<!-- select count(*) from store_list where A like '%' || #{keyword} || '%' -->
 		select count(*) from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')+2=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date
-		<if test='search != null || search != ""'>
+		<!-- <if test='search != null || search != ""'>
 			<if test='searchn == 0'>
-			<!-- 음식명 -->
 			 and store_info like '%' || #{search} || '%' 
 			</if>
 			<if test='searchn == 1'>
-			<!-- 매장명 -->
 			 and store_nm like '%' || #{search} || '%'
 			</if>
-		</if>
-		<!-- <if test="#{search} == null">
-		
 		</if> -->
+		
+		<choose>
+			<!-- 뷰단에서 조건준것처럼 모든 조건~단일조건 까지 전부 확인 -->
+				<!-- 파라미터중에서도 0~3 에 따라서 컬럼이 바뀌는 값들이 있음 그 처리도 전부다 해줘야함 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- cate_nm 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, searchn 제외 -->
+			<when test='sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal 두종류 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+
+			<!-- sortValue 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sortValue, cate_nm 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal, cate_nm 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal, sortValue 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			</when>
+			
+			<!-- searcn 두종류, cate_nm 제외 -->
+			<when test='sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search 두종류, sortValue 제외 -->
+			<when test='maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search 두종류, sal두종류 제외 -->
+			<when test='sortValue != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal, sortValue, cate_nm 세종류 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, sortValue, cate_nm 세종류 제외 -->
+			<when test='maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, sal, cate_nm 세종류 제외 -->
+			<when test='sortValue != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, sal, sortValue 세종류 제외 -->
+			<when test='cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- 한종류씩 있는경우에도 전부 처리해야함 = 5가지 -->
+			<when test='floor_no != -1'>
+			</when>
+			
+			<when test='search != "" &amp;&amp; searchn != -1'>
+				 <foreach collection="search_1" item="search_1_item" index="index">
+       				<if test="searchn eq index">
+       				 and ${search_1_item} like '%' || #{search} || '%'
+       				</if>
+   				 </foreach>
+			</when>
+			
+			<when test='maxSal != -1 &amp;&amp; minSal != -1'>
+			</when>
+			
+			<when test='sortValue != -1'>
+			</when>
+			
+			<when test='cate_nm != -1'>
+			</when>
+			
+			<otherwise>
+			</otherwise> 
+			
+			<!-- 
+			위 조건을 제외한 나머지 인데 범위가 불확실해서 주석처리 (= 기능은 전체 검색)
+			-->
+				
+		</choose>
 	</select>
 	
 	<!-- <sql id="test1"></sql> -->
