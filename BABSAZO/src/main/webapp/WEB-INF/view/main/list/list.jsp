@@ -109,16 +109,38 @@ $(function(){
 	    if($('.form-group input#max').val() == null || $('.form-group input#max').val() == ""){
 	    	$('.form-group input#max').focus();
 	    }else{
-	    	if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// 금액을 제외한 항목+층별 옵션이 선택된경우
-	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&searchn=2&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
-	    	}else if(getParameters('cate_nm')!=undefined){// 항목만 선택된상태에서 금액입력한경우
-	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm');
-	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined){// 검색한 상태에서 금액 입력한 경우
+	    	if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// 금액을 제외한 전체 파라미터가 존재하는경우
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){// 층을 제외한 파라미터 전체
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+	    	}else if(getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){ // cde
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// bde
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){ // bce
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined){// bc
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('cate_nm')!=undefined){
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('floor_no')!=undefined){ // abe
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){//acd
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm');
+	    	}else if(getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){//ace	
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){//ade
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
+	    		/* 여기부터는 금액 + 나머지 하나씩인경우 */
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined){// ab
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
-	    	}else if(getParameters('floor_no')!=undefined){// 층만 선택한 상태에서 금액입력
+	    	}else if(getParameters('sortValue')!=undefined){//ac
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue');
+	    	}else if(getParameters('cate_nm')!=undefined){//ad
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm');
+	    	}else if(getParameters('floor_no')!=undefined){// ae
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&floor_no='+getParameters('floor_no');
 	    	}else{// 가격만 입력받은 경우
-		    	/* alert('여기?'); */
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val();
 	    	} 
 	    }
@@ -130,16 +152,38 @@ $(function(){
 	    if($('.form-group input#min').val() == null || $('.form-group input#min').val() == ""){
 	    	$('.form-group input#min').focus();
 	    }else{
-	    	if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// 금액을 제외한 항목+층별+검색 옵션이 선택된경우
+	    	if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// 금액을 제외한 전체 파라미터가 존재하는경우
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){// 층을 제외한 파라미터 전체
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+	    	}else if(getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){ // cde
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// bde
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
-	    	}else if(getParameters('cate_nm')!=undefined){// 항목만 선택된상태에서 금액입력한경우
-	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm');
-	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined){// 검색한 상태에서 금액 입력한 경우
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){ // bce
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('sortValue')!=undefined){// bc
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('cate_nm')!=undefined){
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined && getParameters('floor_no')!=undefined){ // abe
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){//acd
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm');
+	    	}else if(getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){//ace	
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue')+'&floor_no='+getParameters('floor_no');
+	    	}else if(getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){//ade
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
+	    		/* 여기부터는 금액 + 나머지 하나씩인경우 */
+	    	}else if(getParameters('searchn')!=undefined && getParameters('search')!=undefined){// ab
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
-	    	}else if(getParameters('floor_no')!=undefined){// 층만 선택한 상태에서 금액 입력
+	    	}else if(getParameters('sortValue')!=undefined){//ac
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&sortValue='+getParameters('sortValue');
+	    	}else if(getParameters('cate_nm')!=undefined){//ad
+	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&cate_nm='+getParameters('cate_nm');
+	    	}else if(getParameters('floor_no')!=undefined){// ae
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val()+'&floor_no='+getParameters('floor_no');
 	    	}else{// 가격만 입력받은 경우
-		    	/* alert('여기?'); */
 	    		location.href='list.do?maxSal='+$('.form-group input#max').val()+'&minSal='+$('.form-group input#min').val();
 	    	} 
 	    }
@@ -168,17 +212,41 @@ $(function(){
 		// 이부분은 필요없음 (어차피 리다이렉트처리되기때문 )//////
 		$(".checkbox#food input").attr("checked", false); // 모든 대상의 체크를 해제
 		$(this).attr("checked", true); // 클릭한 대상만 체크
+		/* 
+			왜있는지 이해가 잘 안가는 코드 두줄
 		$(this).val();
-		location.href='list.do?cate_nm='+$(this).val();
-		if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('floor_no')!=undefined){// 음식 선택전에 금액+층+검색 이 선택된경우
+		location.href='list.do?cate_nm='+$(this).val(); 
+		*/
+		
+		if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){//
+			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined){//
+			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&sortValue='+getParameters('sortValue')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('floor_no')!=undefined){//
 			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&floor_no='+getParameters('floor_no');
-		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){// 검색 + 금액 인 상태에서 음식종류 선택
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){ // 여기
 			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
-		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){// 금액입력된 상태에서 음식종류 선택
-			location.href='list.do?cate_nm='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
-		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined){// 검색된 상태에서 음식종류 선택
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('sortValue')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('floor_no')!=undefined){// be
+			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined){//cd
+			location.href='list.do?cate_nm='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('sortValue')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&sortValue='+getParameters('sortValue')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined){
 			location.href='list.do?cate_nm='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
-		}else if(getParameters('floor_no')!=undefined){// 층만 선택된 상태에서 음식종류 선택
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
+		}else if(getParameters('sortValue')!=undefined){
+			location.href='list.do?cate_nm='+$(this).val()+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('floor_no')!=undefined){
 			location.href='list.do?cate_nm='+$(this).val()+'&floor_no='+getParameters('floor_no');
 		}else{// 음식만을 선택했을시 발생
 			location.href='list.do?cate_nm='+$(this).val();
@@ -206,13 +274,37 @@ $(function(){
 		$(this).attr("checked", true); // 클릭한 대상만 체크
 		$(this).val();
 		
-		if(getParameters('cate_nm')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('search')!=undefined && getParameters('searchn')!=undefined){// 층 선택전에 금액+음식+검색이 선택된경우
-			location.href='list.do?floor_no='+$(this).val()+'&cate_nm='+getParameters('cate_nm')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&search='+getParameters('search')+'&searchn='+getParameters('searchn');
-		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){// 금액입력된 상태에서 층별 선택
+		if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){//
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined){//
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined){//
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){ // 여기
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('sortValue')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('cate_nm')!=undefined){// be
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('sortValue')!=undefined){//cd
+			location.href='list.do?floor_no='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('sortValue')!=undefined && getParameters('cate_nm')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&sortValue='+getParameters('sortValue')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&searchn='+getParameters('searchn')+'&search='+getParameters('search');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){
 			location.href='list.do?floor_no='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
-		}else if(getParameters('cate_nm')!=undefined){// 음식종류 선택된 상태에서 층별 선택
+		}else if(getParameters('sortValue')!=undefined){
+			location.href='list.do?floor_no='+$(this).val()+'&sortValue='+getParameters('sortValue');
+		}else if(getParameters('cate_nm')!=undefined){
 			location.href='list.do?floor_no='+$(this).val()+'&cate_nm='+getParameters('cate_nm');
-		}else{// 층만을 선택했을시 발생
+		}else{// 
 			location.href='list.do?floor_no='+$(this).val();
 		}
 	});
@@ -229,19 +321,37 @@ $(function() {
  
 $(function(){
 	$('#sort-category').change(function(){
-		
 		if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){// 모든 항목이 선택된 경우에서의 정렬
 			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
-		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined){//
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined){//
+			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('floor_no')!=undefined){//
+			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('cate_nm')!=undefined){//
+			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('floor_no')!=undefined){//
+			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('cate_nm')!=undefined){// 
 			location.href='list.do?sortValue='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&cate_nm='+getParameters('cate_nm');
-		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined && getParameters('cate_nm')!=undefined){
-			location.href='list.do?sortValue='+$(this).val()+'&cate_nm='+getParameters('cate_nm')+'&search='+getParameters('search')+'&searchn='+getParameters('searchn');
-		}else if(getParameters('cate_nm')!=undefined){//항목만선택
-			location.href='list.do?sortValue='+$(this).val()+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined && getParameters('floor_no')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal')+'&floor_no='+getParameters('floor_no');
+		}else if(getParameters('cate_nm')!=undefined && getParameters('floor_no')!=undefined){//여기
+			location.href='list.do?sortValue='+$(this).val()+'&cate_nm='+getParameters('cate_nm')+'&floor_no='+getParameters('floor_no');
 		}else if(getParameters('search')!=undefined && getParameters('searchn')!=undefined){
 			location.href='list.do?sortValue='+$(this).val()+'&search='+getParameters('search')+'&searchn='+getParameters('searchn');
+		}else if(getParameters('maxSal')!=undefined && getParameters('minSal')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&maxSal='+getParameters('maxSal')+'&minSal='+getParameters('minSal');
+		}else if(getParameters('cate_nm')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&cate_nm='+getParameters('cate_nm');
+		}else if(getParameters('floor_no')!=undefined){
+			location.href='list.do?sortValue='+$(this).val()+'&floor_no='+getParameters('floor_no');
 		}else{// 모든 값에 대한 정렬 ( 항목선택 x )
-			/* alert('검색한 값이 없는경우'); */
 			location.href='list.do?sortValue='+$(this).val();
 		}
 	});
@@ -609,8 +719,6 @@ $(function(){
 													<option value="3">잔여석순</option>
 												</select>
 											</form>
-											<iframe id="targetFrame" name="targetFrame" width="1"
-												height="1"></iframe>
 										</div>
 									</div>
 									<div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">

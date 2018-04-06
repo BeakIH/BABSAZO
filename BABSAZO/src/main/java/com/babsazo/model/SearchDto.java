@@ -16,8 +16,36 @@ public class SearchDto {
 	private int cate_nm;	// 음식종류
 	private int floor_no;	// 층 선택
 	
+	private String[] search_1;
+	private String[] search_2;
+	private String[] search_3;
+	
 	public SearchDto() {
 
+	}
+	
+	public String[] getSearch_1() {
+		return search_1;
+	}
+
+	public void setSearch_1(String[] search_1) {
+		this.search_1 = search_1;
+	}
+
+	public String[] getSearch_2() {
+		return search_2;
+	}
+
+	public void setSearch_2(String[] search_2) {
+		this.search_2 = search_2;
+	}
+
+	public String[] getSearch_3() {
+		return search_3;
+	}
+
+	public void setSearch_3(String[] search_3) {
+		this.search_3 = search_3;
 	}
 
 	public String getSearch() {
