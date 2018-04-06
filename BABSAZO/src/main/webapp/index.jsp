@@ -10,4 +10,4 @@
 <% response.sendRedirect("main/list/main.do"); %>
 
 </body>
-</html> 
+</html>
