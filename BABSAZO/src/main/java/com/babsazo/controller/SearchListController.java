@@ -26,12 +26,32 @@ public class SearchListController {
 	private ListService listService;
 	
 	@RequestMapping("/main/list/list.do")
-	public ModelAndView intoListPage(@Valid SearchDto searchDto, @RequestParam(defaultValue="1") int page, @RequestParam(defaultValue="", value="search", required=false) String search, @RequestParam(defaultValue="0", value="searchn", required=false) int searchn) {
+	public ModelAndView intoListPage(
+			@Valid SearchDto searchDto, @RequestParam(defaultValue="1") int page, 
+			@RequestParam(defaultValue="", value="search", required=false) String search, 
+			@RequestParam(defaultValue="-1", value="searchn", required=false) int searchn,
+			@RequestParam(defaultValue="-1", value="maxSal", required=false) int maxSal,
+			@RequestParam(defaultValue="-1", value="minSal", required=false) int minSal,
+			@RequestParam(defaultValue="-1", value="sortValue", required=false) int sortValue,
+			@RequestParam(defaultValue="-1", value="cate_nm", required=false) int cate_nm,
+			@RequestParam(defaultValue="-1", value="floor_no", required=false) int floor_no) {
 		ModelAndView mav = new ModelAndView();
 		
+		// 음식 , 가게명, 층별
+		String[] search_1 = {"store_info", "store_nm"};
+		String[] search_2 = { "avg_price", "avg_price", "preference", "avl_tbl_cnt" };
+		String[] search_3 = { "'한식'", "'양식'", "'중식'", "'일식'" };
+		
 		// search 와 searchn 의 null 값처리 시작
+		System.out.println("======== 파라미터값 출력 ========");
 		System.out.println("search 값 :"+search);
 		System.out.println("searchn 값 :"+searchn);
+		System.out.println("maxSal 값 :"+maxSal);
+		System.out.println("minSal 값 :"+minSal);
+		System.out.println("sortValue 값 :"+sortValue);
+		System.out.println("cate_nm 값 :"+cate_nm);
+		System.out.println("floor_no 값 :"+floor_no);
+		System.out.println("=============================");
 		
 		/*if(search=="" || searchn==0) {
 			search = "";
@@ -42,6 +62,16 @@ public class SearchListController {
 		
 		searchDto.setSearch(search);
 		searchDto.setSearchn(searchn);
+		searchDto.setSortValue(sortValue);
+		searchDto.setMinSal(minSal);
+		searchDto.setMaxSal(maxSal);
+		searchDto.setCate_nm(cate_nm);
+		searchDto.setFloor_no(floor_no);
+		
+		// 검색어 쿼리
+		searchDto.setSearch_1(search_1);
+		searchDto.setSearch_2(search_2);
+		searchDto.setSearch_3(search_3);
 		
 		/*총 페이지 연산*/
 		int pageSize = 10;
@@ -87,6 +117,10 @@ public class SearchListController {
 		mav.addObject("maxPage", maxPage);
 		mav.addObject("startPage", startPage);
 		mav.addObject("endPage", endPage);
+/*		mav.addObject("search_1", search_1);
+		mav.addObject("search_2", search_2);
+		mav.addObject("search_3", search_3);*/
+		
 		return mav;
 		/*return "main/list/list";*/
 	}
