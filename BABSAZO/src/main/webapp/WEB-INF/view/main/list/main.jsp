@@ -426,6 +426,11 @@ function closeNav() {// 사이드메뉴 버튼 눌렀을때 나오는 창의 x �
                 </span> </div>
             </form>
           </div>
+          <div class="col-md-4 col-sm-12">
+	          <div>
+	          	<a href="view/jsp/admin/admin_main.jsp">admin</a>
+	          </div>
+          </div>
         </div>
       </div>
     </div>
