@@ -5,7 +5,7 @@
   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 	<!-- 스프링3.대를 써야 사용할 수 있다.-->
 	<tiles-definitions>
-	
+	 
 	<definition name="base_layout" template="/WEB-INF/viewtiles/template/layout.jsp"	preparer="menuPreparer">
 		<put-attribute name="header" value="/WEB-INF/viewtiles/template/header.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/viewtiles/template/footer.jsp" />
