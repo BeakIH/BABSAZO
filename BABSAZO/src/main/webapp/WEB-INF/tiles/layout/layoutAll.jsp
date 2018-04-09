@@ -15,7 +15,7 @@
 				value="/tiles/tile/HeaderFooter.jsp" />
 		</div>
 
-		<div class="left">
+		<div class="sideMenu">
 			<tiles:insertAttribute name="sideMenu" 
 				value="/tiles/tile/sideMenuBar.jsp"/>
 		</div>
