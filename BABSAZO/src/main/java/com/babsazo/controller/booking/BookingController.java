@@ -17,8 +17,9 @@ public class BookingController {
 		// 매장번호별 예약현황 조회
 		@RequestMapping(value= "/admin/StoreBookingList.do")
 		public String bookingList(Model model) {
-			List<BookingDTO> bkList = bookingService.selectAll();
+			List<BookingDTO> bkList = bookingService.selectStoreAll();
 			model.addAttribute("list", bkList);
+			System.out.println("매장번호별 조");
 			return "admin/bookingList";
 		}
 		
@@ -27,7 +28,7 @@ public class BookingController {
 		public String updateConfirmYn(BookingDTO dto) {
 			int bkNo = dto.getBkNo();
 			bookingService.updateConfirmYn(dto);
-			System.out.println("우왕");
+			System.out.println("confirmYN");
 			return "admin/bookingList";
 		}
 		

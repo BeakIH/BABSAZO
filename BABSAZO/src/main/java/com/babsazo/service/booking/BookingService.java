@@ -9,7 +9,7 @@ import com.babsazo.model.BookingDTO;
 public class BookingService extends SqlSessionDaoSupport {
 	
 	// 매장번호별 예약현황 조회
-	public List<BookingDTO> selectAll() {
+	public List<BookingDTO> selectStoreAll() {
 		return getSqlSession().selectList("admin.selectBooking");
 	}
 	
