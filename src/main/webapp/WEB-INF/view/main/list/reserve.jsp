@@ -55,7 +55,7 @@
 <script src="${pageContext.request.contextPath}/resources/lib/photoswipe/photoswipe-ui-default.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/lib/lib.js"></script>
 
-<script type="text/javascript">
+<script type="text/javascript"> 
 
 /* 달력 */
  
