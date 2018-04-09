@@ -10,8 +10,8 @@
 
 <!-- Bootstrap -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900%7COpen+Sans" rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/lib/animate.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/lib/selectric/selectric.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/lib/swiper/css/swiper.min.css" rel="stylesheet">
