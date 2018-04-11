@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="list">
+	<select id="allList" resultType="com.babsazo.model.ListCommand">
+		<!-- select * from store_list a , seating b where a.store_no = b.store_no -->
+		<!-- select * from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date -->
+		
+		<!-- 11시 이전 bk_time 이 없어서 해당시간에 +2 해줌 -->
+		select * from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')+2=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date
+	</select>
+	
+	<select id="totalListCount" resultType="int">
+		select count(*) from store_list
+	</select>
+	
+	<!-- 검색했을시에 데이터를 얻어올 쿼리문 -->
+	<select id="detailList" resultType="com.babsazo.model.ListCommand" parameterType="com.babsazo.model.SearchDto">
+		select * from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')+2=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date
+		<if test='search != null || search != ""'>
+			<if test='searchn == 0'>
+			<!-- 음식명 -->
+			 and store_info like '%' || #{search} || '%' 
+			</if>
+			<if test='searchn == 1'>
+			<!-- 매장명 -->
+			 and store_nm like '%' || #{search} || '%'
+			</if>
+		</if>
+	</select>
+	
+	<select id="detailListCount" resultType="int" parameterType="com.babsazo.model.SearchDto">
+		<!-- 검색어와 카테고리 파라미터 두개를 가지고 쿼리문을 작성 -->
+		<!-- 					여기가 searchn이 0이냐, 1이냐에 따라서 변해야함	 -->
+		
+		<!-- select count(*) from store_list where A like '%' || #{keyword} || '%' -->
+		select count(*) from store_list a , seating b where a.store_no = b.store_no and to_char(sysdate,'hh24')+2=substr(bk_time,0,2) and to_char(sysdate,'yyyy-mm-dd') = bk_date
+		<!-- <if test='search != null || search != ""'>
+			<if test='searchn == 0'>
+			 and store_info like '%' || #{search} || '%' 
+			</if>
+			<if test='searchn == 1'>
+			 and store_nm like '%' || #{search} || '%'
+			</if>
+		</if> -->
+		
+		<choose>
+			<!-- 뷰단에서 조건준것처럼 모든 조건~단일조건 까지 전부 확인 -->
+				<!-- 파라미터중에서도 0~3 에 따라서 컬럼이 바뀌는 값들이 있음 그 처리도 전부다 해줘야함 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- cate_nm 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, searchn 제외 -->
+			<when test='sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal 두종류 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+
+			<!-- sortValue 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sortValue, cate_nm 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal, cate_nm 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; sortValue != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal, sortValue 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			</when>
+			
+			<!-- searcn 두종류, cate_nm 제외 -->
+			<when test='sortValue != -1 &amp;&amp; maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search 두종류, sortValue 제외 -->
+			<when test='maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search 두종류, sal두종류 제외 -->
+			<when test='sortValue != -1 &amp;&amp; cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- sal, sortValue, cate_nm 세종류 제외 -->
+			<when test='search != "" &amp;&amp; searchn != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, sortValue, cate_nm 세종류 제외 -->
+			<when test='maxSal != -1 &amp;&amp; minSal != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, sal, cate_nm 세종류 제외 -->
+			<when test='sortValue != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- search, sal, sortValue 세종류 제외 -->
+			<when test='cate_nm != -1 &amp;&amp; floor_no != -1'>
+			
+			</when>
+			
+			<!-- 한종류씩 있는경우에도 전부 처리해야함 = 5가지 -->
+			<when test='floor_no != -1'>
+			</when>
+			
+			<when test='search != "" &amp;&amp; searchn != -1'>
+				 <foreach collection="search_1" item="search_1_item" index="index">
+       				<if test="searchn eq index">
+       				 and ${search_1_item} like '%' || #{search} || '%'
+       				</if>
+   				 </foreach>
+			</when>
+			
+			<when test='maxSal != -1 &amp;&amp; minSal != -1'>
+			</when>
+			
+			<when test='sortValue != -1'>
+			</when>
+			
+			<when test='cate_nm != -1'>
+			</when>
+			
+			<otherwise>
+			</otherwise> 
+			
+			<!-- 
+			위 조건을 제외한 나머지 인데 범위가 불확실해서 주석처리 (= 기능은 전체 검색)
+			-->
+				
+		</choose>
+	</select>
+	
+	<!-- <sql id="test1"></sql> -->
+	<!-- <select id="selectOneBoardList" parameterType="int" resultType="summer.model.BoardCommand">
+		select NUM, WRITER, SUBJECT, REG_DATE, CONTENT from BOARD where num = #{boardNum}
+	</select>	
+	
+	<update id="updateBoardList" parameterType="summer.model.BoardCommand">
+		update BOARD set SUBJECT =#{subject} , REG_DATE = sysdate, CONTENT=#{content} where NUM = #{num}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from BOARD where NUM = #{num}
+	</delete>
+	
+	<insert id="insertBoardList" parameterType="summer.model.BoardCommand">
+		insert into BOARD(NUM, WRITER, SUBJECT, REG_DATE, CONTENT) values(BOARD_NUM.NEXTVAL,#{writer},#{subject},sysdate,#{content})
+	</insert>
+	
+	<insert id="insertBoardListWithTime" parameterType="summer.model.BoardCommand">
+		insert into BOARD(NUM, WRITER, SUBJECT, REG_DATE, CONTENT) values(BOARD_NUM.NEXTVAL,#{writer},#{subject},#{reg_date},#{content})
+	</insert> -->
+	
+</mapper>
