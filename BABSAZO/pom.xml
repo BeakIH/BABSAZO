@@ -133,6 +133,16 @@
 	    <artifactId>json-lib-ext-spring</artifactId>
 	    <version>1.0.2</version>
 	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-simple</artifactId>
+		<version>1.6.1</version>
+		<scope>test</scope>
+	</dependency>
+	
+	
   </dependencies>
   <build>
     <finalName>FinalTest</finalName>

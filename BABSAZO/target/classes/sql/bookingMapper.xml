@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매장번호별 예약현황 조회 -->
 	<select id = "selectBooking" parameterType = "com.babsazo.model.BookingDTO" resultType = "com.babsazo.model.BookingDTO">
 		SELECT * FROM BOOKING
-		where STORE_NO = #{STORE_NO} order by BK_DATE ASC, BK_TIME ASC
+		where STORE_NO = 1001
+		order by BK_DATE ASC, BK_TIME ASC
 	</select>
 	
 	<!-- 접수된 예약건에 대한 매장관리자 예약접수 확인여부 -->

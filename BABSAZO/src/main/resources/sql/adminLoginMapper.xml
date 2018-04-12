@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="login">
+	
+	<!-- 관리자 아이디, 비밀번호 체크 -->
+	<select id = "adminLoginCheck" resultType = "String">
+		select adm_id as admId 
+		from emp
+		where adm_id = #{admId} and adm_pw = #{admPw}
+	</select>	
+	
+	<select id = "viewMember"  resultType = "com.babsazo.model.MemberDTO">
+		select *
+		from emp
+		where store_no = #{storeNo}
+	</select>
+	
+	<!-- 관리자 비밀번호 변경 -->
+	<update id = "changePW" parameterType = "String">
+		update emp
+		set adm_pw = #{admPw}
+		where empno = #{empNo}
+	</update>
+	
+	
+	
+</mapper>

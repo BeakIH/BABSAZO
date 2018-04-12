@@ -14,8 +14,8 @@ public class BookingService extends SqlSessionDaoSupport {
 	}
 	
 	// 접수된 예약건에 대한 매장관리자 예약접수 확인여부
-	public void updateConfirmYn(BookingDTO dto) {
-		getSqlSession().update("admin.updateConfirmYn", dto);
+	public void updateConfirmYn() {
+		getSqlSession().update("admin.updateConfirmYn");
 	}
 	
 	
