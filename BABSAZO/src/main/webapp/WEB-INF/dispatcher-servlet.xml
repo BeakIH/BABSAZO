@@ -10,7 +10,7 @@
 	<!-- multipartResolver -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-
+ 
 	<!-- servlet경로까지 포함하여 검색하게 하는 bean -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"

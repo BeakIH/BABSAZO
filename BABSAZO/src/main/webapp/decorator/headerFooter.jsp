@@ -14,7 +14,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>BABSAZO<decorator:title /></title>
 
-<!-- Bootstrap -->
+<!-- Bootstrap --> 
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900%7COpen+Sans"
 	rel="stylesheet" />

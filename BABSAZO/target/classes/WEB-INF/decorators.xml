@@ -10,7 +10,7 @@
          <pattern>/view/member/*</pattern>
          <pattern>/view/login/*</pattern>
       </decorator>
-      
+       
       <!-- 
       <excludes>
          <pattern>/jsp/storeList/main.do</pattern>
