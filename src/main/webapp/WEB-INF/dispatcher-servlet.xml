@@ -96,4 +96,6 @@
 	<!-- list_info bean생성 -->
 	<bean class="com.babsazo.service.StoreListDateService"/>
 	<bean class="com.babsazo.controller.StoreListDateController"/>
+	
+	<bean class="com.babsazo.controller.admin.AdminMain"/>
 </beans>
