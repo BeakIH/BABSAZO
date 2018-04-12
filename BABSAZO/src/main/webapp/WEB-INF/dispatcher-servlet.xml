@@ -92,8 +92,14 @@
 	<bean class="com.babsazo.controller.MainController" />
 	<bean class="com.babsazo.controller.SearchListController"/>
 	
+	<!-- 윤]회원가입 bean -->
+	<bean class="com.babsazo.controller.register.JoinController" p:dao-ref="joinDAO" />
+	<bean class="com.babsazo.controller.register.JoinDAO" p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	
 	
 	<!-- list_info bean생성 -->
 	<bean class="com.babsazo.service.StoreListDateService"/>
 	<bean class="com.babsazo.controller.StoreListDateController"/>
+	
 </beans>
