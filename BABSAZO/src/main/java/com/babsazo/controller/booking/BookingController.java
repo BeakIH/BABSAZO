@@ -32,7 +32,7 @@ public class BookingController {
 			mav.setViewName("admin2/bookingList");
 			System.out.println("매장번호별 조회");
 			return mav;
-		}
+		} 
 
 		// 접수된 예약건에 대한 매장관리자 예약접수 확인여부
 		@RequestMapping(value = "/admin2/newBookingList.do")
