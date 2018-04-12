@@ -8,7 +8,7 @@
 
 <c:set var="normal" value="<script type='text/javascript'> alert('${name} 님 환영합니다.');</script>"/>
 <c:set var="check" value="${check}"/>
-<c:choose>
+<c:choose> 
 	 
 	<c:when test= "${check==0}">
 		<c:out value="${passfalse}" escapeXml = "false" />

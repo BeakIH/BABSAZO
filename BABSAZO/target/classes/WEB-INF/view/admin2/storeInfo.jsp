@@ -8,7 +8,7 @@
           <div class="col-md-7 col-lg-8 col-xl-8">
             <div class="page-header bordered">
               <h1> ${storeNm } <small> ${empnm}관리자님 환영합니다.</small></h1>
-            </div>
+            </div> 
             <form action="index.php">
               <h3 class="subheadline"> 매장 No.${storeNo} </h3>
               <div class="row">

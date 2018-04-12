@@ -9,7 +9,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>BABSAZO</title>
 </head>
-<body>
+<body> 
           <!-- 알림 수신 설정 부분 -->
           <div class="col-md-7 col-lg-8 col-xl-8">
             <div class="page-header bordered">

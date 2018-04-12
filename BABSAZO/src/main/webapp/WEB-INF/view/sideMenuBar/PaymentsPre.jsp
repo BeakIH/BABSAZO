@@ -9,7 +9,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>BABSAZO</title>
 </head>
-<body>
+<body> 
           <!-- 거래 정보 설정 -->
           
           

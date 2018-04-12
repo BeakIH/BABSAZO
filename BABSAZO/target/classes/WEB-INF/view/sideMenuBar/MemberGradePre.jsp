@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html> 
 <head><title> </title></head>
-<body>
+<body> 
           <!-- 멤버십 정보 -->
           
           <div class="col-md-7 col-lg-8 col-xl-8">

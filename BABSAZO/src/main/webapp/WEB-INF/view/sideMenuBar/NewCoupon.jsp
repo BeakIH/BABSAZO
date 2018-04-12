@@ -10,7 +10,7 @@
 <title>BABSAZO</title>
 </head>
 <body>
-
+ 
         <div class="row has-sidebar">
           <div class="col-md-5 col-lg-4 col-xl-4">
             <div id="sidebar" class="sidebar-left">

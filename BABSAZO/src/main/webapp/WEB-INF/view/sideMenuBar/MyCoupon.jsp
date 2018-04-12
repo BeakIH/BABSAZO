@@ -9,7 +9,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>BABSAZO</title>
 </head>
-<body>
+<body> 
 <!-- 
         <div class="row has-sidebar">
           <div class="col-md-5 col-lg-4 col-xl-4">

@@ -9,7 +9,7 @@
 <c:if test="${messege!=null}">
 <script>
 alert('${messege}');
-</script> 
+</script>  
 </c:if>
 <div class="col-md-7 col-lg-8 col-xl-8">
             <div class="page-header bordered mt0">

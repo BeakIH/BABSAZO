@@ -5,7 +5,7 @@
 <head>
     <title>로그아웃</title>
 
-</head>
+</head> 
 <body>
     <%
         session.invalidate(); // 모든세션정보 삭제
