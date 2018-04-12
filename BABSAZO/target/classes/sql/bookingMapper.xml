@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where STORE_NO = 1001
 		order by BK_DATE ASC, BK_TIME ASC
 	</select>
-	
+	 
 	<!-- 접수된 예약건에 대한 매장관리자 예약접수 확인여부 -->
 	<update id = "updateConfirmYn" parameterType = "com.babsazo.model.BookingDTO">
 		UPDATE BOOKING

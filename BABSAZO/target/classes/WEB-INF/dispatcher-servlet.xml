@@ -86,23 +86,15 @@
 	<bean class="com.babsazo.controller.MainController" />
 	<bean class="com.babsazo.controller.SearchListController"/>
 	
-	<!-- 윤]회원가입 bean -->
-	<bean class="com.babsazo.controller.register.JoinController" p:dao-ref="joinDAO" />
-	<bean class="com.babsazo.controller.register.JoinDAO" p:sqlSessionFactory-ref="sqlSessionFactory" />
-	
-	
 	
 	<!-- list_info bean생성 -->
 	<bean class="com.babsazo.service.StoreListDateService"/>
 	<bean class="com.babsazo.controller.StoreListDateController"/>
 	
-<<<<<<< HEAD
-=======
 	<!-- bookingList bean -->
 	<bean class ="com.babsazo.controller.booking.BookingController"/>
 	<bean class ="com.babsazo.service.booking.BookingService">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
->>>>>>> refs/remotes/origin/KIMSOHEE
 </beans>
 
