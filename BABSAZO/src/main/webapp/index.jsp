@@ -10,6 +10,6 @@
 <%-- <%  response.sendRedirect("main/list/main.do"); %> --%>
 <a href="admin2/StoreBookingList.do?storeNo=1001"> bookingList </a><br>
 <a href="admin/login.do"> 로그인 </a><br>
- 
+  
 </body>
 </html>
