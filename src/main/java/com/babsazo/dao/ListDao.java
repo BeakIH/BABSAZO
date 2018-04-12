@@ -25,5 +25,5 @@ public class ListDao extends SqlSessionDaoSupport{
 	public List getListData(String mapperId, ListCommand sendParam){
 		List bList = getSqlSession().selectList(mapperId, sendParam);
 		return bList;
-	}	
+	}
 }

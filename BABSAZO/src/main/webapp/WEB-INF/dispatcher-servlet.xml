@@ -6,12 +6,6 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- viewResolver -->
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
 
 	<!-- multipartResolver -->
 	<bean id="multipartResolver"
@@ -48,11 +42,11 @@
 	<context:property-placeholder location="classpath:db.properties" />
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-		<property name="driverClass" value="${jdbc.driver}" />
-		<property name="jdbcUrl" value="${jdbc.url}" />
-		<property name="user" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-	</bean>
+		<property name="driverClass" value="oradhcle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+		<property name="user" value="BAB" />
+		<property name="password" value="SAZO" />
+	</bean>  
 
 	<!-- mapper file 사용 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -102,4 +96,13 @@
 	<bean class="com.babsazo.service.StoreListDateService"/>
 	<bean class="com.babsazo.controller.StoreListDateController"/>
 	
+<<<<<<< HEAD
+=======
+	<!-- bookingList bean -->
+	<bean class ="com.babsazo.controller.booking.BookingController"/>
+	<bean class ="com.babsazo.service.booking.BookingService">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+>>>>>>> refs/remotes/origin/KIMSOHEE
 </beans>
+

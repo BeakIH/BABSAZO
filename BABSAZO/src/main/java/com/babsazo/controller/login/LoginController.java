@@ -11,7 +11,7 @@ import com.babsazo.errors.AuthenticationException;
 import com.babsazo.model.EmpDTO;
 
 @Controller
-@RequestMapping("/admin/login.do")
+@RequestMapping("admin/login.do")
 public class LoginController {
 	
 	private Authenticator authenticator; 
@@ -22,6 +22,7 @@ public class LoginController {
 	
 	@ModelAttribute("login")
 	public EmpDTO formBacking() {
+		System.out.println("dd");
 		return new EmpDTO();
 	}
 	
@@ -29,14 +30,14 @@ public class LoginController {
 	public String submit(@ModelAttribute("login") EmpDTO empDto, BindingResult result) {
 			new LoginCommandValidator().validate(empDto, result);
 			if(result.hasErrors()) {
-				return "loginForm";
+				return "login/loginPro";
 			}
 			try {
 				authenticator.authenticate(empDto.getAdmId(), empDto.getAdmPw());
 				return "loginSuccess";
 			} catch (AuthenticationException e) {
 				result.reject("invalidIdOrPassword", new Object[] {empDto.getAdmId()}, null);
-				return "loginForm";
+				return "login/loginPro";
 			}
 	}
 	
