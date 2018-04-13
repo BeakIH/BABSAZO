@@ -8,6 +8,6 @@
 </head>
 <body>
 <% response.sendRedirect("main/list/main.do"); %>
-<%-- <% response.sendRedirect("main/list/test.do"); %> --%>
+<a href="register/register.do"> 회원가입 </a><br>
 </body>
-</html>
+</html> 

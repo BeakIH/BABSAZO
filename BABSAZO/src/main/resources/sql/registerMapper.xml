@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="register" >
+	<insert id="registerInsert" parameterType="com.babsazo.controller.register.JoinCommand" >
+		insert into member(memberNo,memberType,age,job,memberName,birthday,re_date,phone,passwd,gender,email)
+		values (#{memberNo},#{memberType},#{age},#{job},#{memberName},#{birthday},#{re_date},#{phone},#{passwd},#{gender},#{email})
+	</insert>
+	<insert id="registerAddressInsert" parameterType="com.babsazo.controller.register.JoinZipCommand">
+		insert into zipcode(memberNo,zipcode,address1,address2)
+		values (#{memberNo},#{zipcode},#{address1},#{address2})
+	</insert>
+	
+</mapper>
