@@ -6,6 +6,26 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- Ajax 한글처리 -->
+	<mvc:annotation-driven>  
+      <mvc:message-converters>
+         <!-- @ResponseBody로 String 처리할때 한글처리 -->
+         <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+               <list>
+                  <value>text/html;charset=UTF-8</value>
+               </list>
+            </property>
+         </bean>
+      </mvc:message-converters>
+   	</mvc:annotation-driven>
+
+	<!-- viewResolver -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 
 	<!-- multipartResolver -->
 	<bean id="multipartResolver"
@@ -96,13 +116,10 @@
 	<bean class="com.babsazo.service.StoreListDateService"/>
 	<bean class="com.babsazo.controller.StoreListDateController"/>
 	
-<<<<<<< HEAD
-=======
 	<!-- bookingList bean -->
 	<bean class ="com.babsazo.controller.booking.BookingController"/>
 	<bean class ="com.babsazo.service.booking.BookingService">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
->>>>>>> refs/remotes/origin/KIMSOHEE
 </beans>
 

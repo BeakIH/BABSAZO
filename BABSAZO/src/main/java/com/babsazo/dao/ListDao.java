@@ -12,7 +12,7 @@ public class ListDao extends SqlSessionDaoSupport{
 		return bList;
 	}
 	
-	public List getListData(String mapperId, SearchDto searchDto){
+	public List getListData(String mapperId, SearchDTO searchDto){
 		List bList = getSqlSession().selectList(mapperId, searchDto);
 		return bList;
 	}

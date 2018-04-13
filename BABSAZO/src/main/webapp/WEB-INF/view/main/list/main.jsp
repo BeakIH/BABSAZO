@@ -38,6 +38,54 @@
 
 <script>
 
+/* 팝업창 */
+/* function doPopupopen() {
+   window. open("popup.do", "popup01", "scrollbars=no, width=300, height=360");
+} */
+
+ $(document).ready(function(){
+	/* alert('확인'); //1 */
+	doPopupopen();
+});
+
+function doPopupopen() {
+	/* alert('doPopupopen() 확인');//2 */
+	
+	function getCookie(name){
+		/* alert('getCookie() 확인');//4 // 6 */
+		var nameOfCookie = name + "=";
+		var x = 0;
+		while (x <= document.cookie.length){
+			var y = (x + nameOfCookie.length);
+			if (document.cookie.substring(x, y) == nameOfCookie){
+			if ((endOfCookie = document.cookie.indexOf(";", y)) == -1){
+			endOfCookie = document.cookie.length;
+			}
+			return unescape (document.cookie.substring(y, endOfCookie));
+			}
+			x = document.cookie.indexOf (" ", x) + 1;
+			if (x == 0) break;
+		}
+		return "";
+	}
+	
+	/* alert('쿠키확인전');//3 */
+	/* alert(getCookie("popname"));//5  값이 done 이라고 나옴 */
+	var popname = getCookie("popname");
+	
+	/* 쿠키값 확인 */
+	console.log(popname);
+	
+	/* if (true){ */
+	if (popname !== "done"){
+		/* alert('popname가 done이 아닐때 '); */
+		var popUrl = "popup.do"; //팝업창에 출력될 페이지 URL
+		var popOption = "width=320, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}
+}
+
+
 /* 검색창 카테고리 변경시 placeholder 변경 */
 $(document).ready(function(){
    $('.search-in label').click(function(){
@@ -50,11 +98,6 @@ $(document).ready(function(){
    });
 });
 
-
-
-</script>
-
-<script>
 var check=0; // 사이드메뉴 열고닫는데에 사용되는 조건변수
 
 function openNav() {// 사이드메뉴 버튼 기능
@@ -75,6 +118,54 @@ function closeNav() {// 사이드메뉴 버튼 눌렀을때 나오는 창의 x �
    check-=1;
 }
 
+/* 자동완성 */
+
+/* var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
+
+$('#the-basics .form-control').form-control({
+	hint: true,
+  highlight: true,
+  minLength: 1
+}, {
+  name: 'states',
+  source: substringMatcher(states)
+}).on('form-control:open', function() {
+}).on('form-control:rendered', function(element, data) { // 검색 결과 화면 생성 이벤트
+}).on('form-control:cursorchanged', function(element, data) { // 위 아래 커서 이동시 이벤트
+}).on('form-control:selected', function(element, data) { // 선택 이벤트
+}).on('form-control:autocompleted', function(element, data) { // 검색어 자동완성 이벤트
+}); */
 
 </script>
 
@@ -90,7 +181,7 @@ function closeNav() {// 사이드메뉴 버튼 눌렀을때 나오는 창의 x �
 <div id="main">
 <nav class="navbar navbar-expand-lg navbar-dark navbar-over absolute-top" id="menu">
   <div class="container">
-  <a class="navbar-brand" href="/SemiProject/jsp/storeList/main.do"><!-- <span class="icon-uilove-realestate"></span> -->
+  <a class="navbar-brand" href="main.do"><!-- <span class="icon-uilove-realestate"></span> -->
     <span><img src="${pageContext.request.contextPath}/resources/img/밥사조로고.png" alt="Smiley face" height="50" width="90"></span>
    <!-- <span><img src="../../img/밥사조4층.png" alt="Smiley face" height="30" width="60"></span> -->
   </a>
