@@ -8,6 +8,7 @@
 </head>
 <body>
 <% response.sendRedirect("main/list/main.do"); %>
+<%-- <% response.sendRedirect("main/list/test.do"); %> --%>
 
 </body>
 </html>

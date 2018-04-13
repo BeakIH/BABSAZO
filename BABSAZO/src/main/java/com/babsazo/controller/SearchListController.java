@@ -3,6 +3,7 @@ package com.babsazo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.babsazo.model.ListCommand;
 import com.babsazo.service.ListService;
-import com.babsazo.model.SearchDto;
+
+import net.sf.json.JSONObject;
+
+import com.babsazo.model.SearchDTO;
+import com.babsazo.model.StoreListDTO;
 
 //데이터 검색에 사용되는 컨트롤러
 
@@ -27,7 +33,7 @@ public class SearchListController {
 	
 	@RequestMapping("/main/list/list.do")
 	public ModelAndView intoListPage(
-			@Valid SearchDto searchDto, @RequestParam(defaultValue="1") int page, 
+			@Valid SearchDTO searchDto, @RequestParam(defaultValue="1") int page, 
 			@RequestParam(defaultValue="", value="search", required=false) String search, 
 			@RequestParam(defaultValue="-1", value="searchn", required=false) int searchn,
 			@RequestParam(defaultValue="-1", value="maxSal", required=false) int maxSal,
@@ -39,11 +45,12 @@ public class SearchListController {
 		
 		// 음식 , 가게명, 층별
 		String[] search_1 = {"store_info", "store_nm"};
-		String[] search_2 = { "avg_price", "avg_price", "preference", "avl_tbl_cnt" };
-		String[] search_3 = { "'한식'", "'양식'", "'중식'", "'일식'" };
+		String[] search_2 = { "'한식'", "'양식'", "'중식'", "'일식'" };
+		String[] search_3 = { "avg_price", "avg_price", "preference", "avl_tbl_cnt" };
 		
 		// search 와 searchn 의 null 값처리 시작
-		System.out.println("======== 파라미터값 출력 ========");
+		/*System.out.println("======== 파라미터값 출력 ========");
+		System.out.println("page 값 :"+page);
 		System.out.println("search 값 :"+search);
 		System.out.println("searchn 값 :"+searchn);
 		System.out.println("maxSal 값 :"+maxSal);
@@ -51,7 +58,7 @@ public class SearchListController {
 		System.out.println("sortValue 값 :"+sortValue);
 		System.out.println("cate_nm 값 :"+cate_nm);
 		System.out.println("floor_no 값 :"+floor_no);
-		System.out.println("=============================");
+		System.out.println("=============================");*/
 		
 		/*if(search=="" || searchn==0) {
 			search = "";
@@ -112,16 +119,34 @@ public class SearchListController {
 		}
 		
 		mav.setViewName("main/list/list");
-		mav.addObject("storeListInPage", detailListInPage); // 데이터자체는 main 호출했을때와 다름 
+		mav.addObject("storeListInPage", detailListInPage); // 데이터자체는 main 호출했을때와 다름
+		mav.addObject("detailListCount", detailListCount);
 		mav.addObject("searchDto", searchDto);
 		mav.addObject("maxPage", maxPage);
 		mav.addObject("startPage", startPage);
 		mav.addObject("endPage", endPage);
-/*		mav.addObject("search_1", search_1);
-		mav.addObject("search_2", search_2);
-		mav.addObject("search_3", search_3);*/
+		
+		System.out.println("데이터 입력 후 mav::"+mav);
 		
 		return mav;
-		/*return "main/list/list";*/
+	}
+	
+	@RequestMapping(value="/main/list/detail.do", method=RequestMethod.POST,produces="text/plain; charset=UTF-8")
+	@ResponseBody
+	public String getOneList(int store_no,HttpServletResponse resp){
+		
+		resp.setContentType("text/html; charset=UTF-8");
+		JSONObject jso = new JSONObject();
+		ModelAndView mav = new ModelAndView();
+		
+		List<ListCommand> oneList = listService.getOneStore(store_no);
+		
+		oneList.size();
+		mav.setViewName("main/list/list");
+		mav.addObject("oneList", oneList);
+		jso.put("oneList", oneList);
+		System.out.println("json:"+jso.toString());
+		
+		return jso.toString();
 	}
 }

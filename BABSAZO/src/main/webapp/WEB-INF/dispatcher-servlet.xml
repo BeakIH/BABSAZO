@@ -7,6 +7,21 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 
+
+	<!-- Ajax 한글처리 -->
+	<mvc:annotation-driven>  
+      <mvc:message-converters>
+         <!-- @ResponseBody로 String 처리할때 한글처리 -->
+         <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+               <list>
+                  <value>text/html;charset=UTF-8</value>
+               </list>
+            </property>
+         </bean>
+      </mvc:message-converters>
+   	</mvc:annotation-driven>
+
 	<!-- viewResolver -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -87,4 +102,6 @@
 	<bean class="com.babsazo.service.ListService" />
 	<bean class="com.babsazo.controller.MainController" />
 	<bean class="com.babsazo.controller.SearchListController"/>
+	
 </beans>
+

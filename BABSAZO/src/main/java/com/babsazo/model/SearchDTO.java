@@ -1,8 +1,10 @@
 package com.babsazo.model;
 
+import java.util.Arrays;
+
 // 검색에 사용되는 모든 파라미터를 가진 DTO
 
-public class SearchDto {
+public class SearchDTO {
 
 	// 검색창 
 	private String search;	// 검색어
@@ -20,7 +22,7 @@ public class SearchDto {
 	private String[] search_2;
 	private String[] search_3;
 	
-	public SearchDto() {
+	public SearchDTO() {
 
 	}
 	
@@ -106,7 +108,9 @@ public class SearchDto {
 
 	@Override
 	public String toString() {
-		return "SearchDto [search=" + search + ", searchn=" + searchn + ", sortValue=" + sortValue + ", minSal="
-				+ minSal + ", maxSal=" + maxSal + ", cate_nm=" + cate_nm + ", floor_no=" + floor_no + "]";
+		return "SearchDTO [search=" + search + ", searchn=" + searchn + ", sortValue=" + sortValue + ", minSal="
+				+ minSal + ", maxSal=" + maxSal + ", cate_nm=" + cate_nm + ", floor_no=" + floor_no + ", search_1="
+				+ Arrays.toString(search_1) + ", search_2=" + Arrays.toString(search_2) + ", search_3="
+				+ Arrays.toString(search_3) + "]";
 	}
 }

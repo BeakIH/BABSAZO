@@ -70,6 +70,16 @@ public class MainController {
 		/*return "main/list/main";*/
 	}
 	
+	@RequestMapping("/main/list/popup.do")
+	public String popUp() {
+		return "main/list/popup";
+	}
+
+	@RequestMapping("/main/list/test.do")
+	public String test() {
+		return "main/list/test";
+	}
+	
 	/*// 없어도 될지 모름
 	@RequestMapping("/main/list/list.do")
 	public ModelAndView intoListPage(@RequestParam(defaultValue="1") int page) {
